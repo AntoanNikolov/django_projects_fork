@@ -1,3 +1,5 @@
+from django.views import View
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.utils.html import escape
@@ -179,6 +181,13 @@ def prettyurldata(request, thing):
     </body>
     """
     return HttpResponse(response)
+
+class Icecream(View):
+    def get(self, request):
+        x = {
+
+        }
+        return render(request, 'viewsbasics/icecream.html', x)
 
 
 def bounce(request):

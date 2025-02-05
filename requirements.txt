@@ -1,0 +1,37 @@
+# To activate this run
+#
+# pip install -r requirements.txt
+# python -m django --version
+#
+# On a Macintosh or Linux this should be python3 and pip3
+#
+Django
+# Other requirments - frozen to a version to simplify tech support
+asgiref
+certifi
+cffi
+charset-normalizer
+crispy-bootstrap5
+cryptography
+defusedxml
+django-crispy-forms
+django-extensions
+django-filter
+django-taggit
+djangorestframework
+idna
+importlib-metadata
+Markdown
+oauthlib
+pycparser
+PyJWT
+python3-openid
+pytz
+requests
+requests-oauthlib
+social-auth-app-django
+social-auth-core
+sqlparse
+typing_extensions
+urllib3
+zipp
