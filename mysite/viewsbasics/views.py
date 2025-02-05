@@ -189,6 +189,31 @@ class Icecream(View):
         }
         return render(request, 'viewsbasics/icecream.html', x)
 
+class Apple(View):
+    def get(self, request, number):
+
+        x = {
+            "number" : int(number)
+        }
+        return render(request, 'viewsbasics/apple.html', x)
+
+class Banana(View):
+    def get(self, request, number):
+
+        x = {
+            "number" : int(number)
+        }
+        return render(request, 'viewsbasics/banana.html', x)
+
+
+class Orange(View):
+    def get(self, request, number):
+
+        x = {
+            "number" : int(number)
+        }
+        return render(request, 'viewsbasics/orange.html', x)
+
 
 def bounce(request):
     places = [

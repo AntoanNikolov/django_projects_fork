@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banana</title>
+</head>
+<body>
+    {% if number > 1 %}
+        <p>I would like {{ number }} bananas please!</p>
+    {% elif number == 1 %}
+        <p>I would like {{ number }} banana please!</p>
+    {% elif number <= 0 %}
+        <p>I HATE bananas, do not give me any!</p>
+    {% endif %}
+</body>
+</html>
