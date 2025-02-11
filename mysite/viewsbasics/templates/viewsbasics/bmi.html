@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+</head>
+<body>
+    {% if bmi == 10000 %}
+        <p>Please enter your weight and height in the URL.</p>
+    
+    {% else %}
+        <p>You weigh {{weight}}kg and are {{height}}cm tall</p>
+        <p>Your bmi is {{bmi}}</p>
+        {% if bmi < 18.5 %}
+            <p>You are <strong>underweight</strong></p>
+
+        {% elif bmi >= 18.5 and bmi < 25 %}
+            <p>Your BMI is in the <strong>healthy range</strong></p>
+
+        {% elif bmi >= 25 and bmi < 30 %}
+            <p>You are <strong>overweight</strong></p>
+
+        {% elif bmi >= 30 and bmi < 40 %}
+            <p>You are <strong>obese</strong></p>
+
+        {% elif bmi >= 40 %}
+            <p>You are <strong>severely obese</strong></p>
+
+        {% endif %}
+    {% endif %}
+    
+    
+</body>
+</html>

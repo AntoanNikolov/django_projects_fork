@@ -11,9 +11,12 @@ urlpatterns = [
     path('safer', views.safer),
     path('prettyurldata/<thing>', views.prettyurldata),
     path('bounce', views.bounce),
-    path('icecream', views.Icecream.as_view()),
+    path('icecream', views.Icecream.as_view(), name='icecream'),
 
     path('apple/<slug:number>', views.Apple.as_view(), name='apple'),
     path('banana/<slug:number>', views.Banana.as_view(), name = 'banana'),
-    path('orange/<slug:number>', views.Orange.as_view(), name = 'orange')
+    path('orange/<slug:number>', views.Orange.as_view(), name = 'orange'),
+    path('bmi/<slug:weight>/<slug:height>', views.BMI.as_view(), name = 'bmi'),
+    path('finalvelocity/<slug:vi>/<slug:a>/<slug:t>', views.Finalvelocity.as_view(), name = 'finalvelocity'),
+
 ]    

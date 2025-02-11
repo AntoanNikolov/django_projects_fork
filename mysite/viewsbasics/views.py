@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.http import HttpResponseRedirect
 from django.utils.html import escape
 from random import choice
+import math
 
 
 def funktionally(request):
@@ -184,8 +185,9 @@ def prettyurldata(request, thing):
 
 class Icecream(View):
     def get(self, request):
+        flavor = request.GET.get('flavor')
         x = {
-
+            'flavor':flavor
         }
         return render(request, 'viewsbasics/icecream.html', x)
 
@@ -213,6 +215,30 @@ class Orange(View):
             "number" : int(number)
         }
         return render(request, 'viewsbasics/orange.html', x)
+
+class BMI(View):
+    def get(self, request, height, weight):
+        bmi=int(weight)/(int(height))**2
+        bmi = bmi*10000
+        x = {
+            "height" : int(height),
+            "weight" : int(weight),
+            "bmi" : int(bmi)
+        }
+        return render(request, 'viewsbasics/bmi.html', x)
+
+class Finalvelocity(View):
+    def get(self, request, vi, a, t):
+        vf=int(vi)+int(a)*int(t)
+
+        x = {
+            "vi" : int(vi),
+            "a" : int(a),
+            "t": int(t),
+            "vf" : int(vf)
+        }
+        
+        return render(request, 'viewsbasics/finalvelocity.html', x)
 
 
 def bounce(request):
