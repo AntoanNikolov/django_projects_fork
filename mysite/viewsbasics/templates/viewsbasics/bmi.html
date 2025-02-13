@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BMI Calculator</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     {% if bmi == 10000 %}
         <p>Please enter your weight and height in the URL.</p>
     
@@ -29,7 +23,5 @@
 
         {% endif %}
     {% endif %}
-    
-    
-</body>
-</html>
+
+{% endblock %}

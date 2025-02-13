@@ -1,59 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<title>Views Basics</title>
-<link rel="icon" href="https://ict.gctaa.net/resources/GCTAAfavicon.png">
-<style>
-body {
-    margin: 4vw;
-}
-main {
-    padding: 4vw;
-    border: 1px dotted #777;
-}
-h1, footer {
-    text-align: center;
-}
-footer {
-    margin-top: 1vw;
-}
-a, a:visited {
-    text-decoration: none;
-    font-weight: bold;
-    color: #C92; 
-}
-main {
-  display: grid;
-  grid-template-columns: 48vw 48vw;
-  grid-template-rows: auto;
-}
-</style>
-</head>
-<body>
-<h1>Views Basics</h1>
+{% extends 'base.html' %}
 
-<main>
-<ul>
-  <li><a href="funktionally">Simple functional view named funktionally</a></li>
-  <li><a href="danger?thing=WatchOut">An unsafe view named danger</a></li>
-  <li><a href="danger?thing=%3Cscript%3Ealert%28%27Evil%20code%20has%20taken%20your%20computer!%27%29%3B%3C%2Fscript%3EI'm done now ;-)">Evil
-  JavaScript hijacks your computer</a></li>
-  <li><a href="safer?thing=%3Cscript%3Ealert%28%27Evil%20code%20has%20taken%20your%20computer!%27%29%3B%3C%2Fscript%3E">Tame
-  that JavaScript by escaping it</a></li>
-  <li><a href="prettyurldata/42">Pretty URL Data</a></li>
-  <li><a href="bounce">Bounce! Where will it take me?</a></li>
-  <li><a href="{% url 'viewsbasics:apple' 1%}">Want some apples?</a></li>
-  <li><a href="{% url 'viewsbasics:banana' 1%}">Want some bananas?</a></li>
-  <li><a href="{% url 'viewsbasics:orange' 1%}">Want some oranges?</a></li>
-  <li><a href="{% url 'viewsbasics:icecream'%}">What kind of icecream do you like?</a></li>
-  <li><a href="{% url 'viewsbasics:bmi' 1 1%}">Calculate your bmi here. (Use URL parameters)</a></li>
-  <li><a href="{% url 'viewsbasics:finalvelocity' 0 0 0%}">Calculate final velocity. (Use URL parameters)</a></li>
-</ul>
-</main>
+{% block content %}
+    <h1>Views Basics</h1>
 
-<footer>
-<a href="/">Return to DJ4E Projects</a>
-</footer>
+    <main>
+    <ul>
+    <li><a href="funktionally">Simple functional view named funktionally</a></li>
+    <li><a href="danger?thing=WatchOut">An unsafe view named danger</a></li>
+    <li><a href="danger?thing=%3Cscript%3Ealert%28%27Evil%20code%20has%20taken%20your%20computer!%27%29%3B%3C%2Fscript%3EI'mdonenow;-)">Evil
+    JavaScript hijacks your computer</a></li>
+    <li><a href="safer?thing=%3Cscript%3Ealert%28%27Evil%20code%20has%20taken%20your%20computer!%27%29%3B%3C%2Fscript%3E">Tame
+    that JavaScript by escaping it</a></li>
+    <li><a href="prettyurldata/42">Pretty URL Data</a></li>
+    <li><a href="bounce">Bounce! Where will it take me?</a></li>
+    <li><a href="{% url 'viewsbasics:apple' 1%}">Want some apples?</a></li>
+    <li><a href="{% url 'viewsbasics:banana' 1%}">Want some bananas?</a></li>
+    <li><a href="{% url 'viewsbasics:orange' 1%}">Want some oranges?</a></li>
+    <li><a href="{% url 'viewsbasics:icecream'%}">What kind of icecream do you like?</a></li>
+    <li><a href="{% url 'viewsbasics:bmi' 1 1%}">Calculate your bmi here. (Use URL parameters)</a></li>
+    <li><a href="{% url 'viewsbasics:finalvelocity' 0 0 0%}">Calculate final velocity. (Use URL parameters)</a></li>
+    </ul>
+    </main>
 
-</body>
+    <footer>
+    <a href="/">Return to DJ4E Projects</a>
+    </footer>
+
+{% endblock %}
