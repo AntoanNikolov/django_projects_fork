@@ -7,8 +7,13 @@
 <link rel="icon" href="https://ict.gctaa.net/resources/GCTAAfavicon.png">
 <link href="{% static "base.css" %}" rel="stylesheet"></link>
 <script src="{% static "init.js" %}"></script>
+<!-- Link below is for pretty icons. Look up FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
+    <div>
+        <a href="/"><i class="fa-solid fa-house home"></i></a>
+    </div>
     {% block content %}
     {% endblock %}
 </body>
