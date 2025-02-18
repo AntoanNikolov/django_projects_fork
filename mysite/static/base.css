@@ -12,6 +12,9 @@ h1, footer {
     color:Brown;
 }
 footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     margin-top: 1vw;
 }
 a, a:visited {
@@ -34,7 +37,7 @@ main {
 .goback {
     position: absolute;
     top: 10px;
-    right: 8%;
+    right: 6%;
     font-size: 24px;
     color: brown;
 }
