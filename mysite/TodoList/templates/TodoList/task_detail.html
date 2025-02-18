@@ -1,11 +1,12 @@
 {% extends 'base.html' %}
 
 {%block content%}
+
+
 <div>
-{% comment %} <a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a> {% endcomment %}
-<a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a>
+    <a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a>
 </div>
-{{ taskdetail.task_details }}
+<p>{{ taskdetail.task_details }}</p>
 
 
 {% endblock %}
