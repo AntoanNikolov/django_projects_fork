@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views import generic
-from .models import Task, TaskDetail
+from .models import Task
 # Create your views here.
 
 class TaskListView(generic.ListView):
@@ -9,4 +9,4 @@ class TaskListView(generic.ListView):
 
 class TaskDetailView(generic.DetailView):
     template_name = "TodoList/task_detail.html"
-    model = TaskDetail
+    model = Task
