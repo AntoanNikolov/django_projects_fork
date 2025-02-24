@@ -9,16 +9,16 @@
 
 
 {% for slot in timeslots %}
-<p class = "centered_services">
-  {{ slot.time }} -
-  {% if slot.is_occupied %}
-    Booked
-  {% else %}
-    Available - <a href = 'blablablabla'>Book now</a>
-  {% endif %}
-</p>
+    <p class = "centered_services">
+        {{ slot.time }} -
+        {% if slot.is_occupied %}
+            Booked
+        {% else %}
+            Available - <a href = 'blablablabla'>Book now</a>
+        {% endif %}
+    </p>
 {% empty %}
-<p class = "centered_services">No time slots available.</p>
+    <p class = "centered_services">No time slots available.</p>
 {% endfor %}
 
 
