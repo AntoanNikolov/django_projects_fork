@@ -1,13 +1,11 @@
 {% extends 'base.html' %}
-
 {%block content%}
+<h1>Welcome to our spa reservations website!</h1>
+<hr>
+<h2>Pick a service to book below:</h2>
 
 {% for service in service_list %}
-
-    <ul>
-        <li><a href="{% url 'Cosmetology:timeslots' service.id %}">{{ service.title }}</a></li>
-    </ul>
-
+    <p class = "centered_services"><a href="{% url 'Cosmetology:timeslots' service.id %}">{{ service.title }}</a></p>
 {%endfor%}
 
 {%endblock%}

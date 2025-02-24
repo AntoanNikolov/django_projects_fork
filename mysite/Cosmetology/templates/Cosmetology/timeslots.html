@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
 {%block content%}
+<div>
+    <a href="{% url 'Cosmetology:index' %}"><i class="fa fa-arrow-left goback"></i></a>
+</div>
 
-{{service.title}}
+<h1>Available times for {{service.title}}</h1>
+
+
+{% for slot in timeslots %}
+<p class = "centered_services">
+  {{ slot.time }} -
+  {% if slot.is_occupied %}
+    Booked
+  {% else %}
+    Available - <a href = 'blablablabla'>Book now</a>
+  {% endif %}
+</p>
+{% empty %}
+<p class = "centered_services">No time slots available.</p>
+{% endfor %}
+
+
 
 {%endblock%}

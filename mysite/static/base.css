@@ -11,6 +11,9 @@ h1, footer {
     text-align: center;
     color:Brown;
 }
+h2 {
+    text-align: center;
+}
 footer {
     width: 100%;
     position: fixed;
@@ -40,4 +43,14 @@ main {
     right: 6%;
     font-size: 24px;
     color: brown;
+}
+.centered_services{
+    text-align: center;
+    font-size:larger;
+}
+
+hr {
+    border: none; 
+    height: 2px; 
+    background: linear-gradient(to right, transparent, #000, transparent); 
 }
