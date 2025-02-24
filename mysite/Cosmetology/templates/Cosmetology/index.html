@@ -1,9 +1,13 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 {%block content%}
 
+{% for service in service_list %}
 
+    <ul>
+        <li><a href="{% url 'Cosmetology:timeslots' service.id %}">{{ service.title }}</a></li>
+    </ul>
 
-
+{%endfor%}
 
 {%endblock%}
