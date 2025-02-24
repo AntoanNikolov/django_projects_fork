@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'Cosmetology.apps.CosmetologyConfig',
     'TodoList.apps.TodolistConfig',
     'polls.apps.PollsConfig',
     'viewsbasics.apps.ViewsbasicsConfig',
