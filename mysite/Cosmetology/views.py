@@ -8,7 +8,7 @@ class ServicesView(generic.ListView):
     model = Service
     template_name = "Cosmetology/index.html"
 
-#we are making a detail view which also serves as a list view. The timeslots of one service are details of the service but 
+#we are making a detail view which also serves as a list view. The timeslots of one service are details of the service and 
 #they are objects that need to be listed
 class ServiceTimeSlotsView(generic.DetailView):
     model = Service
