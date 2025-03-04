@@ -9,4 +9,31 @@
 <p>{{ task.task_details }}</p>
 
 
+<br>
+<p>
+<form method="post" action="{% url 'TodoList:comment_create' task.id %}">
+    {% csrf_token %}
+    <p>comment form here</p>
+<input type="submit" value="Submit">
+</form>
+</p>
+
+
+<p>
+    {% if comments %}
+    <ul>
+      {% for comment in comments %}
+        <li>
+            {{ comment.text }} | make time work here somehow
+            {% comment %} <a href="{% url 'TodoList:comment_delete' comment.id %}">Delete (make icon later)</a> {% endcomment %}
+        </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+      <p>No comments yet</p>
+    {% endif %}
+</p>
+    
+
+
 {% endblock %}
