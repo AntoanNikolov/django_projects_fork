@@ -40,7 +40,7 @@ class TaskUpdateView(generic.UpdateView):
 class CommentCreateView(View):
     def post(self, request, pk) :
         t = get_object_or_404(Task, id=pk)
-        comment_text = request.POST.get('comment')  # Use get() method to avoid KeyError
+        comment_text = request.POST.get('comment')
         if comment_text:
             comment = Comment(text=comment_text, task=t)
             comment.save()
