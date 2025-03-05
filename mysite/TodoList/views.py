@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic, View
 from .models import Task, Comment
@@ -40,6 +40,8 @@ class TaskUpdateView(generic.UpdateView):
 class CommentCreateView(View):
     def post(self, request, pk) :
         t = get_object_or_404(Task, id=pk)
-        comment = Comment(text=request.POST['comment'], task=t)
-        comment.save()
-        return redirect(request.path)
+        comment_text = request.POST.get('comment')  # Use get() method to avoid KeyError
+        if comment_text:
+            comment = Comment(text=comment_text, task=t)
+            comment.save()
+        return redirect(reverse('TodoList:task_detail', args=[pk]))
