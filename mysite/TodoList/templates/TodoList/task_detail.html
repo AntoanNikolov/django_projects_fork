@@ -8,12 +8,12 @@
 </div>
 <p>{{ task.task_details }}</p>
 
-
 <br>
+<hr>
 <p>
 <form method="post" action="{% url 'TodoList:comment_create' task.id %}">
     {% csrf_token %}
-    <p>comment form here</p>
+    {{form.as_p}}
 <input type="submit" value="Submit">
 </form>
 </p>

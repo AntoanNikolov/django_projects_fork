@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic, View
 from .models import Task, Comment
+from .forms import CommentForm
 # Create your views here.
 
 class TaskListView(generic.ListView):
@@ -14,7 +15,9 @@ class TaskDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['comments'] = Comment.objects.filter(task=self.object)
+        context['comments'] = Comment.objects.filter(task=self.object).order_by('-updated_at')
+        context['form'] = CommentForm()
+
         return context
 
 class TaskCreateView(generic.CreateView):
@@ -39,4 +42,4 @@ class CommentCreateView(View):
         t = get_object_or_404(Task, id=pk)
         comment = Comment(text=request.POST['comment'], task=t)
         comment.save()
-        return redirect(reverse('TodoList:task_detail', args=[pk]))
+        return redirect(request.path)
