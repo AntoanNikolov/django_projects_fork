@@ -40,8 +40,16 @@ class TaskUpdateView(generic.UpdateView):
 class CommentCreateView(View):
     def post(self, request, pk) :
         t = get_object_or_404(Task, id=pk)
-        comment_text = request.POST.get('comment')
-        if comment_text:
-            comment = Comment(text=comment_text, task=t)
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.task = t
             comment.save()
         return redirect(reverse('TodoList:detail', args=[pk]))
+    
+class CommentDeleteView(View):
+    def post(self, request, pk): #pk here is the primary key of the comment, not the task 
+        c = get_object_or_404(Comment, id=pk) #grabbing that comment
+        task_id = c.task.id #getting the task id to redirect properly
+        c.delete()
+        return redirect(reverse('TodoList:detail', args=[task_id]))

@@ -10,13 +10,17 @@
 
 <br>
 <hr>
-<p>
+
 <form method="post" action="{% url 'TodoList:comment_create' task.id %}">
-    {% csrf_token %}
-    {{form.as_p}}
-<input type="submit" value="Submit">
+  {% csrf_token %}
+  <div style="display: flex; align-items: center; gap: 8px;">
+    {{ form.as_p }}
+    <button type="submit" class="clear_button">
+      <i class="fa fa-paper-plane"></i>
+    </button>
+  </div>
 </form>
-</p>
+
 
 
 <p>
@@ -24,8 +28,11 @@
     <ul>
       {% for comment in comments %}
         <li>
-            {{ comment.text }} | make time work here somehow
-            {% comment %} <a href="{% url 'TodoList:comment_delete' comment.id %}">Delete (make icon later)</a> {% endcomment %}
+            {{ comment.text }} | {{comment.updated_at}}
+            <form method="post" action="{% url 'TodoList:comment_delete' comment.id %}" style="display: inline;">
+              {% csrf_token %}
+              <button type = "submit" class = "clear_button"><i class="fa fa-trash"></i></button>
+            </form>
         </li>
       {% endfor %}
     </ul>

@@ -58,3 +58,10 @@ hr {
 br {
     clear:both;
 }
+
+.clear_button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: brown;
+}
