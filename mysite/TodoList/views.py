@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from django.views import generic, View
 from .models import Task, Comment
 from .forms import CommentForm
@@ -44,4 +44,4 @@ class CommentCreateView(View):
         if comment_text:
             comment = Comment(text=comment_text, task=t)
             comment.save()
-        return redirect(reverse('TodoList:task_detail', args=[pk]))
+        return redirect(reverse('TodoList:detail', args=[pk]))
