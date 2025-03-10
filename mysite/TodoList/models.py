@@ -12,7 +12,8 @@ class Comment(models.Model) :
     text = models.CharField(max_length=200)
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
 
-    updated_at = models.DateTimeField(auto_now=True)
+    #we are using updated_at with auto_now since we are not updating comments, therefore, we can use them interchangeably with created_at and auto_now_add
+    updated_at = models.DateTimeField(auto_now=True) 
 
     def __str__(self):
         return self.text

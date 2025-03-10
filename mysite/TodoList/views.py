@@ -15,9 +15,8 @@ class TaskDetailView(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['comments'] = Comment.objects.filter(task=self.object).order_by('-updated_at')
+        context['comments'] = Comment.objects.filter(task=self.object).order_by('-updated_at') #doing this here instead of in DTL to order them
         context['form'] = CommentForm()
-        #context['tags'] = Tag.objects.filter(tag=self.object)
 
         return context
 
