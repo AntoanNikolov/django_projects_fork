@@ -59,3 +59,5 @@ class TagCreateView(generic.CreateView):
     template_name = "TodoList/tag_form.html"
     fields = '__all__'
     success_url = reverse_lazy('TodoList:index')
+
+#make it so you open a LIST of tags at that same button and then actually create and delete tags from there instead

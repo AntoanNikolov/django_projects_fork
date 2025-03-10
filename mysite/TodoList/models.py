@@ -4,7 +4,7 @@ from django.db import models
 class Task(models.Model):
     task_summary =  models.CharField(max_length=200)
     task_details = models.CharField(max_length=200)
-    tags = models.ManyToManyField('Tag')
+    tags = models.ManyToManyField('Tag') #task can have many tags that belong to it, a tag can belong to many tasks
     def __str__(self):
         return self.task_summary
     
