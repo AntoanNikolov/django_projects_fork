@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views import generic, View
-from .models import Task, Comment
+from .models import Task, Comment, Tag
 from .forms import CommentForm
 # Create your views here.
 
@@ -17,6 +17,7 @@ class TaskDetailView(generic.DetailView):
 
         context['comments'] = Comment.objects.filter(task=self.object).order_by('-updated_at')
         context['form'] = CommentForm()
+        #context['tags'] = Tag.objects.filter(tag=self.object)
 
         return context
 
@@ -53,3 +54,9 @@ class CommentDeleteView(View):
         task_id = c.task.id #getting the task id to redirect properly
         c.delete()
         return redirect(reverse('TodoList:detail', args=[task_id]))
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    template_name = "TodoList/tag_form.html"
+    fields = '__all__'
+    success_url = reverse_lazy('TodoList:index')

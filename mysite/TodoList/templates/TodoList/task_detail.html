@@ -6,6 +6,13 @@
 <div>
     <a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a>
 </div>
+
+<h3>Tags:
+  {% for tag in task.tags.all %}
+    {{tag.text}}, 
+  {% endfor %}
+</h3>
+
 <p>{{ task.task_details }}</p>
 
 <br>

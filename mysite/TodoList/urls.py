@@ -13,4 +13,5 @@ urlpatterns = [
     path("task_delete/<int:pk>", views.TaskDeleteView.as_view(), name="delete"),
     path("task/<int:pk>/comment_create", views.CommentCreateView.as_view(), name='comment_create'),
     path("comment_delete/<int:pk>", views.CommentDeleteView.as_view(), name='comment_delete'), #we only need the comment id here
+    path("tag_create", views.TagCreateView.as_view(), name="tag_create"),
 ]
