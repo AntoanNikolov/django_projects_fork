@@ -7,9 +7,9 @@
 </div>
 
 <form method="POST">
-{% csrf_token %}
-{{form.as_p}}
-<input type="submit"/>
+    {% csrf_token %}
+    {{form.as_p}}
+    <input type="submit"/>
 </form>
 
 
