@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+<div>
+    <a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a>
+</div>
+
+    {%for tag in tag_list%}
+        <ul>
+            <li>
+                {{tag}}
+                <form method="post" action="{% url 'TodoList:tag_delete' tag.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type = "submit" class = "clear_button"><i class="fa fa-trash"></i></button>
+                </form>
+            </li>
+        </ul>
+
+    {%endfor%}
+
+
+<footer><a href = "{%url 'TodoList:tag_create'%}">Create a tag</a></footer>
+{% endblock %}

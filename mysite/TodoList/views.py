@@ -54,10 +54,19 @@ class CommentDeleteView(View):
         c.delete()
         return redirect(reverse('TodoList:detail', args=[task_id]))
 
+class TagListView(generic.ListView):
+    template_name = "TodoList/tag_list.html"
+    model = Tag
+
+
 class TagCreateView(generic.CreateView):
     model = Tag
     template_name = "TodoList/tag_form.html"
     fields = '__all__'
-    success_url = reverse_lazy('TodoList:index')
+    success_url = reverse_lazy('TodoList:tag_list')
 
-#make it so you open a LIST of tags at that same button and then actually create and delete tags from there instead
+class TagDeleteView(View):
+    def post(self, request, pk): 
+        t = get_object_or_404(Tag, id=pk) 
+        t.delete()
+        return redirect(reverse('TodoList:tag_list'))
