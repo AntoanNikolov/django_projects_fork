@@ -56,6 +56,9 @@ class CommentCreateView(LoginRequiredMixin, View):
         return redirect(reverse('TodoList:detail', args=[pk]))
     
 class CommentDeleteView(LoginRequiredMixin, View):
+    def get(self,request,pk): #explanation for this is above
+        return redirect(reverse('TodoList:detail', args=[pk]))
+
     def post(self, request, pk): #pk here is the primary key of the comment, not the task 
         c = get_object_or_404(Comment, id=pk) #grabbing that comment
         task_id = c.task.id #getting the task id to redirect properly
