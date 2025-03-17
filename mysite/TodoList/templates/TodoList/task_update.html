@@ -1,13 +1,13 @@
 {%extends 'base.html'%}
-{%block content%}
+    {%block content%}
 
-<div>
-    <a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a>
-</div>
+    <div>
+        <a href="{% url 'TodoList:index' %}"><i class="fa fa-arrow-left goback"></i></a>
+    </div>
 
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" value="Update">
-</form>
-{%endblock%}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Update">
+    </form>
+    {%endblock%}
