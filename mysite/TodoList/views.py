@@ -56,8 +56,11 @@ class CommentCreateView(LoginRequiredMixin, View):
         return redirect(reverse('TodoList:detail', args=[pk]))
     
 class CommentDeleteView(LoginRequiredMixin, View):
-    def get(self,request,pk): #explanation for this is above
-        return redirect(reverse('TodoList:detail', args=[pk]))
+    def get(self, request, pk):  #pk is the comment id
+        #using the comment to get the associated task ID, explanation for all this madness is above
+        comment = get_object_or_404(Comment, id=pk)
+        task_id = comment.task.id
+        return redirect(reverse('TodoList:detail', args=[task_id]))
 
     def post(self, request, pk): #pk here is the primary key of the comment, not the task 
         c = get_object_or_404(Comment, id=pk) #grabbing that comment
@@ -77,6 +80,9 @@ class TagCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy('TodoList:tag_list')
 
 class TagDeleteView(LoginRequiredMixin, View):
+    def get(self, request, pk):
+        return redirect(reverse('TodoList:tag_list'))
+    
     def post(self, request, pk): 
         t = get_object_or_404(Tag, id=pk) 
         t.delete()
