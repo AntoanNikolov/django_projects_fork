@@ -4,6 +4,7 @@ from django.views import generic, View
 from .models import Task, Comment, Tag
 from .forms import CommentForm
 from django.contrib.auth.mixins import LoginRequiredMixin
+from TodoList.owner import OwnerCreateView, OwnerUpdateView, OwnerDeleteView
 # Create your views here.
 
 class TaskListView(generic.ListView):
@@ -21,21 +22,21 @@ class TaskDetailView(generic.DetailView):
 
         return context
 
-class TaskCreateView(LoginRequiredMixin, generic.CreateView):
+class TaskCreateView(OwnerCreateView):
     model = Task
     template_name = "TodoList/task_form.html"
-    fields = '__all__'
+    fields = ['task_summary', 'task_details', 'tags']
     success_url = reverse_lazy('TodoList:index')
 
-class TaskDeleteView(LoginRequiredMixin, generic.DeleteView):
+class TaskDeleteView(OwnerDeleteView):
     model = Task
     template_name = "TodoList/task_delete.html"
     success_url = reverse_lazy('TodoList:index')
 
-class TaskUpdateView(LoginRequiredMixin, generic.UpdateView):
+class TaskUpdateView(OwnerUpdateView):
     model = Task
     template_name = "TodoList/task_update.html"
-    fields = '__all__'
+    fields = ['task_summary', 'task_details', 'tags']
     success_url = reverse_lazy('TodoList:index')
 
 class CommentCreateView(LoginRequiredMixin, View):
@@ -52,6 +53,7 @@ class CommentCreateView(LoginRequiredMixin, View):
         if form.is_valid():
             comment = form.save(commit=False) #use the form variable to modify parameters of new comment
             comment.task = t #assign the correct task foreign key
+            comment.owner = self.request.user
             comment.save() #save that thang
         return redirect(reverse('TodoList:detail', args=[pk]))
     
@@ -63,7 +65,7 @@ class CommentDeleteView(LoginRequiredMixin, View):
         return redirect(reverse('TodoList:detail', args=[task_id]))
 
     def post(self, request, pk): #pk here is the primary key of the comment, not the task 
-        c = get_object_or_404(Comment, id=pk) #grabbing that comment
+        c = get_object_or_404(Comment, id=pk, owner=self.request.user) #grabbing that comment
         task_id = c.task.id #getting the task id to redirect properly
         c.delete()
         return redirect(reverse('TodoList:detail', args=[task_id]))
@@ -73,10 +75,10 @@ class TagListView(generic.ListView):
     model = Tag
 
 
-class TagCreateView(LoginRequiredMixin, generic.CreateView):
+class TagCreateView(OwnerCreateView):
     model = Tag
     template_name = "TodoList/tag_form.html"
-    fields = '__all__'
+    fields = ['text']
     success_url = reverse_lazy('TodoList:tag_list')
 
 class TagDeleteView(LoginRequiredMixin, View):
@@ -84,6 +86,6 @@ class TagDeleteView(LoginRequiredMixin, View):
         return redirect(reverse('TodoList:tag_list'))
     
     def post(self, request, pk): 
-        t = get_object_or_404(Tag, id=pk) 
+        t = get_object_or_404(Tag, id=pk, owner=self.request.user) #we can just do this here cause we are not using generic
         t.delete()
         return redirect(reverse('TodoList:tag_list'))

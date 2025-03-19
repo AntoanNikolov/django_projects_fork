@@ -41,10 +41,12 @@
       {% for comment in comments %}
         <li>
             {{ comment.text }} | {{comment.updated_at}}
+            {%if user == comment.owner%}
             <form method="post" action="{% url 'TodoList:comment_delete' comment.id %}" style="display: inline;">
               {% csrf_token %}
               <button type = "submit" class = "clear_button"><i class="fa fa-trash"></i></button>
             </form>
+            {%endif%}
         </li>
       {% endfor %}
     </ul>
